@@ -1,0 +1,8 @@
+DIST libgalago-gtk-0.5.0.tar.bz2 399093 RMD160 dae172e8ff4d9535827226005acb5fef373f014d SHA1 d5f26b2d4134588a458ed65fa3a7cf74d802f8a8 SHA256 734eebb2dc0c706b81643add9eb2676be0ad0ecc30d8ca8527924a3f64b261cc
+EBUILD libgalago-gtk-0.5.0.ebuild 713 RMD160 2a74c67a0c99b7f97878af93ff95df29a8ea3ae2 SHA1 349276ed0de8c11c849e8deb8ee4efd5b2ff53ef SHA256 1b1fd7dcdac3ffe8c719f27e445157f59e3aaa9b53b7e3ed3ac09cdde6f3e771
+MD5 0018fefba13189e116ecf067b33970d5 libgalago-gtk-0.5.0.ebuild 713
+RMD160 2a74c67a0c99b7f97878af93ff95df29a8ea3ae2 libgalago-gtk-0.5.0.ebuild 713
+SHA256 1b1fd7dcdac3ffe8c719f27e445157f59e3aaa9b53b7e3ed3ac09cdde6f3e771 libgalago-gtk-0.5.0.ebuild 713
+MD5 68591844086af441886ffcf2990c7f34 files/digest-libgalago-gtk-0.5.0 262
+RMD160 47c52deeafbde9df4ebd86ec8da913ba17ba5c81 files/digest-libgalago-gtk-0.5.0 262
+SHA256 6d21007c8f8a59dd2c97b0b67300a0e59a3e34109eacd8d58e4cb1240978f048 files/digest-libgalago-gtk-0.5.0 262
