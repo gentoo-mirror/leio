@@ -4,6 +4,8 @@
 
 WANT_AUTOCONF=latest
 WANT_AUTOMAKE=latest
+
+WX_GTK_VER=2.8
 inherit flag-o-matic subversion wxwidgets autotools
 
 DESCRIPTION="Cross-platform MUD client"
@@ -16,15 +18,10 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="python"
 
-RDEPEND="=x11-libs/wxGTK-2.6*
+RDEPEND="=x11-libs/wxGTK-2.8*
 	>=x11-libs/gtk+-2.4
 	python? ( >=dev-lang/python-2.4 )"
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	WX_GTK_VER=2.6
-	need-wxwidgets unicode
-}
 
 src_unpack() {
 	subversion_src_unpack
