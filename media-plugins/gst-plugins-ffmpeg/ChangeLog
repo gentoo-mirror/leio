@@ -1,9 +1,0 @@
-# ChangeLog for media-plugins/gst-plugins-ffmpeg
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  08 Oct 2007; Mart Raudsepp <leio@gentoo.org>
-  +gst-plugins-ffmpeg-9999.ebuild:
-  Live ebuild for gst-ffmpeg. Probably kills kitten, but makes H.264 playback
-  usable for me
-
