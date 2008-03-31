@@ -1,0 +1,3 @@
+# Mart Raudsepp <leio@gentoo.org> (31 Mar 2008)
+# Live ebuild for testing and getting traces to include kernel symbols until sysprof-1.1 is released
+>=dev-util/sysprof-9999
