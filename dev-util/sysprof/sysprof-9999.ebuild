@@ -14,9 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=x11-libs/gtk+-2.6
+RDEPEND=">=x11-libs/gtk+-2.6
 	x11-libs/pango
 	>=gnome-base/libglade-2"
+DEPEND="${RDEPEND}
+	>=dev-util/pkgconfig-0.9"
 
 pkg_setup() {
 	MODULE_NAMES="sysprof-module(misc:${S}/module)"
@@ -28,9 +30,12 @@ It is marked CONFIG_PROFILING in the config file"
 	linux-mod_pkg_setup
 }
 
-src_compile() {
+src_unpack() {
+	subversion_src_unpack
 	eautoreconf
+}
 
+src_compile() {
 	econf --disable-kernel-module || die
 	emake || die
 	linux-mod_src_compile
