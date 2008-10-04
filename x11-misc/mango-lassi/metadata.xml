@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>leio@gentoo.org</email>
+</maintainer>
+<longdescription>Mango Lassi (Alternatively known as "GNOME Input Sharing") is
+something like a Synergy done right, or an x2x that doesn't suck.</longdescription>
+</pkgmetadata>
