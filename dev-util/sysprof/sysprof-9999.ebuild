@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-util/sysprof/sysprof-1.0.9.ebuild,v 1.2 2008/02/29 18:00:10 carlo Exp $
 
-inherit eutils linux-mod autotools subversion
+inherit eutils linux-mod autotools git
 
 DESCRIPTION="System-wide Linux Profiler"
 HOMEPAGE="http://www.daimi.au.dk/~sandmann/sysprof/"
-#SRC_URI="http://www.daimi.au.dk/~sandmann/sysprof/${P}.tar.gz"
-ESVN_REPO_URI="http://svn.gnome.org/svn/sysprof/trunk"
+EGIT_REPO_URI="git://people.freedesktop.org/~sandmann/sysprof"
+EGIT_BOOTSTRAP="eautoreconf"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,11 +28,6 @@ For this you need to enable 'Profiling support' under 'Instrumentation Support'.
 It is marked CONFIG_PROFILING in the config file"
 	BUILD_TARGETS="all"
 	linux-mod_pkg_setup
-}
-
-src_unpack() {
-	subversion_src_unpack
-	eautoreconf
 }
 
 src_compile() {
