@@ -1,7 +1,0 @@
-# Mart Raudsepp <leio@gentoo.org> (31 Mar 2008)
-# Live ebuild for testing and getting traces to include kernel symbols until sysprof-1.1 is released
->=dev-util/sysprof-9999
-
-# Mart Raudsepp <leio@gentoo.org> (04 Oct 2008)
-# Live ebuild as there are no releases, should use snapshots instead
->=x11-misc/mango-lassi-9999
