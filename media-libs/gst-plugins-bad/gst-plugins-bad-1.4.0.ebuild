@@ -46,10 +46,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	# Make RPI egl stuff use pkg-config and related fixups - https://bugzilla.gnome.org/733248
+	# Make RPI egl stuff use pkg-config - https://bugzilla.gnome.org/733248
 	epatch "${FILESDIR}"/egl-rpi-pkgconfig.patch
-	epatch "${FILESDIR}"/egl-gl_cflags.patch
-	epatch "${FILESDIR}"/gl_typechecks_cflags.patch
 	eautoreconf
 }
 
