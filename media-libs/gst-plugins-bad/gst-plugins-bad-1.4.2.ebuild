@@ -12,7 +12,7 @@ HOMEPAGE="http://gstreamer.freedesktop.org/"
 
 LICENSE="LGPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="egl gles2 +introspection +orc rpi vnc wayland"
+IUSE="egl gles2 +introspection +orc opengl rpi vnc wayland"
 
 # FIXME: Some REQUIRED_USE dance for egl/gles2/rpi/wayland
 # FIXME: Any flags needed on raspberypi-userland for wayland or egl?
@@ -38,6 +38,7 @@ RDEPEND="
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1 )
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
+	opengl? ( virtual/opengl[${MULTILIB_USEDEP}] )
 
 	!<media-libs/gst-plugins-good-1.1:${SLOT}
 "
@@ -77,6 +78,9 @@ multilib_src_configure() {
 		fi
 	else
 		myconf+=" --disable-egl"
+	fi
+	if use opengl; then
+		myconf+=" --enable-gl"
 	fi
 
 	gstreamer_multilib_src_configure \
