@@ -18,7 +18,7 @@ SLOT="3"
 #  * http://mail.gnome.org/archives/gtk-devel-list/2010-November/msg00099.html
 # I tried this and got it all compiling, but the end result is unusable as it
 # horribly mixes up the backends -- grobian
-IUSE="aqua cloudprint colord cups debug examples +introspection test vim-syntax wayland X xinerama"
+IUSE="aqua cloudprint colord cups debug examples +introspection gtk3-only test vim-syntax wayland X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
@@ -28,14 +28,15 @@ KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd
 
 # FIXME: introspection data is built against system installation of gtk+:3
 # NOTE: cairo[svg] dep is due to bug 291283 (not patched to avoid eautoreconf)
-# Use gtk+:2 for gtk-update-icon-cache
+# Use gtk+:2 for gtk-update-icon-cache unless USE=gtk3-only
 COMMON_DEPEND="
 	>=dev-libs/atk-2.7.5[introspection?]
 	>=dev-libs/glib-2.39.5:2
 	media-libs/fontconfig
 	>=x11-libs/cairo-1.12[aqua?,glib,svg,X?]
 	>=x11-libs/gdk-pixbuf-2.27.1:2[introspection?,X?]
-	>=x11-libs/gtk+-2.24:2
+	gtk3-only? ( !x11-libs/gtk+:2 )
+	!gtk3-only? ( >=x11-libs/gtk+-2.24:2 )
 	>=x11-libs/pango-1.32.4[introspection?]
 	x11-misc/shared-mime-info
 
@@ -148,7 +149,7 @@ src_configure() {
 		$(use_enable xinerama) \
 		--disable-papi \
 		--enable-man \
-		--enable-gtk2-dependency \
+		$(use_enable !gtk3-only gtk2-dependency) \
 		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog \
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 }
