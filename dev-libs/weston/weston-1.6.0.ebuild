@@ -39,7 +39,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/wayland-1.4.0
+	>=dev-libs/wayland-1.6.0
 	media-libs/lcms:2
 	media-libs/libpng:0=
 	media-libs/libwebp:0=
@@ -61,9 +61,8 @@ RDEPEND="
 		>=virtual/udev-136
 	)
 	egl? (
-		media-libs/glu
 		rpi? ( media-libs/raspberrypi-userland )
-		!rpi? ( media-libs/mesa[gles2,wayland] )
+		!rpi? ( media-libs/glu media-libs/mesa[gles2,wayland] )
 	)
 	editor? ( x11-libs/pango )
 	gles2? (
@@ -107,7 +106,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	if use examples || use gles2 || use test; then
+	if use examples || use egl || use test; then
 		myconf="--enable-simple-clients
 			$(use_enable egl simple-egl-clients)"
 	else
