@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-3.12.2-r1.ebuild,v 1.2 2014/11/24 01:41:45 tetromino Exp $
+# $Header: $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -30,14 +30,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 # NOTE: cairo[svg] dep is due to bug 291283 (not patched to avoid eautoreconf)
 # Use gtk+:2 for gtk-update-icon-cache unless USE=gtk3-only
 COMMON_DEPEND="
-	>=dev-libs/atk-2.7.5[introspection?,${MULTILIB_USEDEP}]
-	>=dev-libs/glib-2.39.5:2[${MULTILIB_USEDEP}]
+	>=dev-libs/atk-2.12[introspection?,${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.41.2:2[${MULTILIB_USEDEP}]
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12[aqua?,glib,svg,X?,${MULTILIB_USEDEP}]
-	>=x11-libs/gdk-pixbuf-2.27.1:2[introspection?,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/gdk-pixbuf-2.30:2[introspection?,X?,${MULTILIB_USEDEP}]
 	gtk3-only? ( !x11-libs/gtk+:2 )
 	!gtk3-only? ( >=x11-libs/gtk+-2.24:2[${MULTILIB_USEDEP}] )
-	>=x11-libs/pango-1.32.4[introspection?,${MULTILIB_USEDEP}]
+	>=x11-libs/pango-1.36.7[introspection?,${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
 
 	cloudprint? (
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.2[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39 )
 	wayland? (
-		>=dev-libs/wayland-1.3.90[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-1.5.91[${MULTILIB_USEDEP}]
 		|| ( media-libs/mesa[wayland,${MULTILIB_USEDEP}] media-libs/raspberrypi-userland[wayland] )
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
 	)
@@ -92,10 +92,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90
 	X? ( !<x11-base/xorg-server-1.11.4 )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508-r3
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)
 "
 PDEPEND="vim-syntax? ( app-vim/gtk-syntax )"
 
@@ -116,9 +112,6 @@ src_prepare() {
 	# -O3 and company cause random crashes in applications. Bug #133469
 	replace-flags -O3 -O2
 	strip-flags
-
-	# Build fix on Darwin 10.6; bug #519058
-	epatch "${FILESDIR}/${P}-darwin10.6.patch"
 
 	if ! use test ; then
 		# don't waste time building tests
