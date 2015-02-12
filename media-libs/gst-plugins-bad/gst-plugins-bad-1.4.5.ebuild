@@ -22,8 +22,8 @@ IUSE="egl gles2 +introspection +orc opengl rpi vnc wayland"
 # X11 is automagic for now, upstream #709530
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
-	>=media-libs/gst-plugins-base-1.2:${SLOT}[${MULTILIB_USEDEP}]
-	>=media-libs/gstreamer-1.2:${SLOT}[${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-base-1.4:${SLOT}[${MULTILIB_USEDEP}]
+	>=media-libs/gstreamer-1.4:${SLOT}[${MULTILIB_USEDEP}]
 	egl? (
 		rpi? ( media-libs/raspberrypi-userland )
 		!rpi? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] )
@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Make RPI egl stuff use pkg-config - https://bugzilla.gnome.org/733248
 	epatch "${FILESDIR}"/egl-rpi-pkgconfig.patch
+	epatch "${FILESDIR}"/fix-wayland-glimagesink.patch
 	eautoreconf
 }
 
