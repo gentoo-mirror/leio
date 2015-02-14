@@ -23,6 +23,10 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="wayland"
 
+RDEPEND="wayland? ( dev-libs/wayland )"
+DEPEND="${RDEPEND}
+	wayland? ( virtual/pkgconfig )"
+
 # TODO:
 # * port vcfiled init script
 # * stuff is still installed to hardcoded /opt/vc location, investigate whether
