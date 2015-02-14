@@ -51,9 +51,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# toolchain file not needed, but build fails if it is not specified
-	local mycmakeargs=(-DCMAKE_TOOLCHAIN_FILE=/dev/null
-			$(cmake-utils_use_build wayland WAYLAND))
+	# FIXME: Fails to link apps using libmmal.so, due to libmmal_util getting filtered out and apps not linking to it
+	append-ldflags $(no-as-needed)
+	local mycmakeargs=(
+		$(cmake-utils_use_build wayland WAYLAND)
+	)
 	cmake-utils_src_configure
 }
 
