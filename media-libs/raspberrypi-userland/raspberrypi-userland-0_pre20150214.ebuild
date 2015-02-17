@@ -74,4 +74,5 @@ src_install() {
 	doins "${FILESDIR}"/bcm_host.pc
 	doins "${FILESDIR}"/egl.pc
 	doins "${FILESDIR}"/glesv2.pc
+	use wayland && doins "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc # Maybe move?
 }
