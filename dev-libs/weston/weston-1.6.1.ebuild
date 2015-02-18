@@ -61,7 +61,7 @@ RDEPEND="
 		>=virtual/udev-136
 	)
 	egl? (
-		rpi? ( media-libs/raspberrypi-userland )
+		rpi? ( media-libs/raspberrypi-userland[wayland] )
 		!rpi? ( media-libs/glu media-libs/mesa[gles2,wayland] )
 	)
 	editor? ( x11-libs/pango )
