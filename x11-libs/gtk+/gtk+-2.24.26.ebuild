@@ -1,9 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.24.25-r1.ebuild,v 1.2 2015/01/19 10:44:02 jer Exp $
+# $Header: $
 
 EAPI="5"
-GCONF_DEBUG="no"
+GCONF_DEBUG="yes"
+GNOME2_LA_PUNT="yes"
 
 inherit autotools eutils flag-o-matic gnome2 multilib virtualx readme.gentoo multilib-minimal
 
@@ -12,12 +13,12 @@ HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-IUSE="aqua cups debug examples gtk3-only +introspection test vim-syntax xinerama"
+IUSE="aqua cups examples gtk3-only +introspection test vim-syntax xinerama"
 REQUIRED_USE="
 	xinerama? ( !aqua )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # NOTE: cairo[svg] dep is due to bug 291283 (not patched to avoid eautoreconf)
 COMMON_DEPEND="
@@ -103,20 +104,21 @@ set_gtk2_confdir() {
 
 src_prepare() {
 	# Fix building due to moved definition, upstream bug #704766
-	epatch "${FILESDIR}"/${PN}-2.24.20-darwin-quartz-pasteboard.patch
+	# Upstream says it was fixed with a different commit
+#	epatch "${FILESDIR}"/${PN}-2.24.20-darwin-quartz-pasteboard.patch
 
-	# Fix tests running when building out of sources, bug #510596
+	# Fix tests running when building out of sources, bug #510596, upstream bug #730319
 	epatch "${FILESDIR}"/${PN}-2.24.24-out-of-source.patch
 
-	# marshalers code was pre-generated with glib-2.31, upstream bug #671763
+	# marshalers code was pre-generated with glib-2.31, upstream bug #662109
 	rm -v gdk/gdkmarshalers.c gtk/gtkmarshal.c gtk/gtkmarshalers.c \
 		perf/marshalers.c || die
 
-	# Stop trying to build unmaintained docs, bug #349754
+	# Stop trying to build unmaintained docs, bug #349754, upstream bug #623150
 	strip_builddir SUBDIRS tutorial docs/Makefile.{am,in}
 	strip_builddir SUBDIRS faq docs/Makefile.{am,in}
 
-	# -O3 and company cause random crashes in applications. Bug #133469
+	# -O3 and company cause random crashes in applications, bug #133469
 	replace-flags -O3 -O2
 	strip-flags
 
@@ -141,8 +143,8 @@ src_prepare() {
 
 		# Skip tests known to fail
 		# https://bugzilla.gnome.org/show_bug.cgi?id=646609
-		sed -e '/g_test_add_func.*test_text_access/s:^://:' \
-			-i "${S}/gtk/tests/testing.c" || die
+#		sed -e '/g_test_add_func.*test_text_access/s:^://:' \
+#			-i "${S}/gtk/tests/testing.c" || die
 
 		# https://bugzilla.gnome.org/show_bug.cgi?id=617473
 		sed -i -e 's:pltcheck.sh:$(NULL):g' \
@@ -172,12 +174,10 @@ src_prepare() {
 multilib_src_configure() {
 	[[ ${ABI} == ppc64 ]] && append-flags -mminimal-toc
 
-	# Passing --disable-debug is not recommended for production use
 	ECONF_SOURCE=${S} \
 	gnome2_src_configure \
 		$(usex aqua --with-gdktarget=quartz --with-gdktarget=x11) \
 		$(usex aqua "" --with-xinput) \
-		$(usex debug --enable-debug=yes "") \
 		$(use_enable cups cups auto) \
 		$(multilib_native_use_enable introspection) \
 		$(use_enable xinerama) \
