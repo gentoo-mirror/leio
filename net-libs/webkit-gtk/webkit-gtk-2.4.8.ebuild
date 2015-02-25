@@ -216,9 +216,9 @@ src_configure() {
 	# Arches without JIT support also need this to really disable it in all places
 	use jit || append-cppflags -DENABLE_JIT=0 -DENABLE_YARR_JIT=0 -DENABLE_ASSEMBLER=0
 
-	if use webgl; then
-		use rpi && append-cppflags $(pkg-config --cflags egl glesv2)
-		use rpi && append-ldflags $(pkg-config --libs egl glesv2)
+	if use rpi; then
+		(use egl || use gles2) && append-cppflags $(pkg-config --cflags egl glesv2)
+		(use egl || use gles2) && append-ldflags $(pkg-config --libs egl glesv2)
 	fi
 
 	# It doesn't compile on alpha without this in LDFLAGS, bug #???
