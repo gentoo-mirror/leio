@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
+	SRC_URI="http://dev.gentoo.org/~leio/distfiles/${P}.tar.xz"
 	KEYWORDS="~arm"
 fi
 
