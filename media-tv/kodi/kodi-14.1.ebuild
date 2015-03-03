@@ -9,7 +9,7 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1 multiprocessing autotools
+inherit eutils flag-o-matic python-single-r1 multiprocessing autotools
 
 CODENAME="Helix"
 case ${PV} in
@@ -193,6 +193,8 @@ src_configure() {
 
 	local myconf
 	use rpi && myconf='--with-platform=raspberry-pi'
+	use rpi && append-cppflags $(pkg-config --cflags egl glesv2)
+	use rpi && append-ldflags $(pkg-config --libs egl glesv2)
 
 	econf \
 		--docdir=/usr/share/doc/${PF} \
