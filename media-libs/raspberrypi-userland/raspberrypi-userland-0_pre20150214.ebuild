@@ -74,5 +74,9 @@ src_install() {
 	doins "${FILESDIR}"/bcm_host.pc
 	doins "${FILESDIR}"/egl.pc
 	doins "${FILESDIR}"/glesv2.pc
-	use wayland && doins "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc # Maybe move?
+	if use wayland; then
+		# Missing wayland-egl version from the patch; claim 9.0 (a mesa version) for now, so gst-plugins-bad wayland-egl check is happy
+		sed -i -e 's/Version:  /Version: 9.0/' "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc
+		doins "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc # Maybe move?
+	fi
 }
