@@ -103,10 +103,6 @@ set_gtk2_confdir() {
 }
 
 src_prepare() {
-	# Fix building due to moved definition, upstream bug #704766
-	# Upstream says it was fixed with a different commit
-#	epatch "${FILESDIR}"/${PN}-2.24.20-darwin-quartz-pasteboard.patch
-
 	# Fix tests running when building out of sources, bug #510596, upstream bug #730319
 	epatch "${FILESDIR}"/${PN}-2.24.24-out-of-source.patch
 
@@ -140,11 +136,6 @@ src_prepare() {
 			|| die "failed to disable recentmanager test (2)"
 		sed 's:\({ "GtkFileChooserButton".*},\):/*\1*/:g' -i gtk/tests/object.c \
 			|| die "failed to disable recentmanager test (3)"
-
-		# Skip tests known to fail
-		# https://bugzilla.gnome.org/show_bug.cgi?id=646609
-#		sed -e '/g_test_add_func.*test_text_access/s:^://:' \
-#			-i "${S}/gtk/tests/testing.c" || die
 
 		# https://bugzilla.gnome.org/show_bug.cgi?id=617473
 		sed -i -e 's:pltcheck.sh:$(NULL):g' \
