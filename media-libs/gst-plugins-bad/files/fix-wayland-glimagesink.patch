@@ -1,0 +1,25 @@
+From a7ce6119707251ffcc1feb3b6e5f3f72dad0ad80 Mon Sep 17 00:00:00 2001
+From: Matthew Waters <matthew@centricular.com>
+Date: Thu, 27 Nov 2014 13:01:19 +1100
+Subject: glimagesink: only attempt a resize when the window has already
+ resized
+
+fixes a black startup screen on wayland
+
+diff --git a/ext/gl/gstglimagesink.c b/ext/gl/gstglimagesink.c
+index c06f580..1c3a7c4 100644
+--- a/ext/gl/gstglimagesink.c
++++ b/ext/gl/gstglimagesink.c
+@@ -1260,7 +1260,8 @@ gst_glimage_sink_on_draw (GstGLImageSink * gl_sink)
+   /* opengl scene */
+   GST_TRACE ("redrawing texture:%u", gl_sink->redisplay_texture);
+ 
+-  if (gl_sink->caps_change) {
++  if (gl_sink->caps_change && gl_sink->window_width > 0
++      && gl_sink->window_height > 0) {
+     GST_GLIMAGE_SINK_UNLOCK (gl_sink);
+     gst_glimage_sink_on_resize (gl_sink, gl_sink->window_width,
+         gl_sink->window_height);
+-- 
+cgit v0.10.2
+
