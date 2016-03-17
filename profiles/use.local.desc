@@ -21,9 +21,6 @@ dev-libs/weston:view - Install wayland-view example application
 dev-libs/weston:wayland-compositor - Enable Wayland compositor support
 dev-libs/weston:x11 - Enable X11 compositor support
 dev-libs/weston:xwayland - Enable ability support native X11 applications
-media-libs/clutter:gtk - Use gdk-pixbuf from x11-libs/gtk+ as image rendering backend
-media-libs/cogl:gles2 - Enable OpenGL ES 2.0 support
-media-libs/cogl:pango - Build cogl-pango library for x11-libs/pango integration
 media-libs/gst-plugins-bad:egl - Enable EGL support
 media-tv/kodi:airplay - enable AirPlay support
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
