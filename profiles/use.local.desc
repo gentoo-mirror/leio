@@ -47,7 +47,3 @@ net-libs/webkit-gtk:gles2 - Enable GLESv2 support.
 net-libs/webkit-gtk:libsecret - Enable libsecret support to store login credentials
 net-libs/webkit-gtk:rpi - Use Raspberry Pi GLES2 libraries instead of mesa (for USE=gles2 egl together with USE=webgl)
 net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API and use Accelerated Compositing
-x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
-x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
-x11-libs/gtk+:gtk3-only - Use only a gtk3 system without gtk2 via building gtk-update-icon-cache from gtk3 SLOT
-x11-libs/gtk+:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit in application chooser
