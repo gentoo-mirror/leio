@@ -47,7 +47,7 @@ src_install() {
 	doins ../\{443830f0-1fff-4f9a-aa1e-444bafbc7319\}.xpi
 
 	# Various links
-	dosym ../../../../usr/share/chrome-token-signing/ee.ria.esteid.json /etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json
+	dosym ../../../../usr/share/chrome-token-signing/ee.ria.esteid.json /etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json # TODO: Check that we don't need separate links for www-client/google-chrome-{beta,unstable} too
 	dosym ../../../usr/share/chrome-token-signing/ee.ria.esteid.json /etc/chromium/native-messaging-hosts/ee.ria.esteid.json
 	# TODO: json links
 }
