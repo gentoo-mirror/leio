@@ -1,3 +1,4 @@
+dev-libs/opensc 0.17.0_p20171111: Libraries and applications to access smartcards
 dev-libs/weston 1.6.1: Wayland reference compositor
 media-libs/gst-plugins-bad 1.4.5: Less plugins for GStreamer
 media-libs/raspberrypi-userland 0_pre20150214: Raspberry Pi userspace tools and libraries

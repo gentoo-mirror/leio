@@ -2,6 +2,10 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+dev-libs/opensc:ctapi - Use CT-API for accessing Smartcard hardware.
+dev-libs/opensc:openct - Use dev-libs/openct (and CT-API) for accessing Smartcard hardware.
+dev-libs/opensc:pcsc-lite - Use sys-apps/pcsc-lite (and PC/SC API) for accessing Smartcard hardware.
+dev-libs/opensc:secure-messaging - Enable secure messaging.
 dev-libs/weston:clients - Enable support for clients
 dev-libs/weston:colord - Allow setting color managment
 dev-libs/weston:drm - Enable drm compositor support
