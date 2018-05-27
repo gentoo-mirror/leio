@@ -2,3 +2,10 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+net-libs/webkit-gtk:coverage - Enable code coverage support
+net-libs/webkit-gtk:egl - Enable EGL support.
+net-libs/webkit-gtk:geoloc - Enable geolocation support through app-misc/geoclue
+net-libs/webkit-gtk:gles2 - Enable GLESv2 support.
+net-libs/webkit-gtk:libsecret - Enable libsecret support to store login credentials
+net-libs/webkit-gtk:rpi - Use Raspberry Pi GLES2 libraries instead of mesa (for USE=gles2 egl together with USE=webgl)
+net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API and use Accelerated Compositing
