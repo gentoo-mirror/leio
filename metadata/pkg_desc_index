@@ -7,4 +7,3 @@ media-tv/kodi 16.1: Kodi is a free and open source media-player and entertainmen
 net-libs/webkit-gtk 2.4.8: Open source web browser engine
 www-plugins/chrome-token-signing 1.0.6: eID signatures WebExtension native host component
 x11-drivers/xf86-video-fbturbo 0.4.0: Drop-in replacement for xf86-video-fbdev and xf86-video-mali providing a better performance on ARM
-x11-wm/maynard 9999: Desktop environment designed for the Raspberry Pi
