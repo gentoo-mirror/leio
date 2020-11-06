@@ -10,5 +10,5 @@ RDEPEND=zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0= ) ssl? ( !libre
 REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? ( !pcsc-lite !openct ) || ( pcsc-lite openct ctapi )
 SLOT=0
 SRC_URI=https://github.com/OpenSC/OpenSC/archive/2846295e1f12790bd9d8b01531affbf6feccf22c.tar.gz -> opensc-0.17.0_p20171111.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=ea26400c905b6ecf5089f45eefbc5589
