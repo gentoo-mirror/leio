@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -19,6 +19,8 @@ RDEPEND="dev-qt/qtwidgets:5
 	>=dev-libs/opensc-0.14[pcsc-lite]
 	app-crypt/ccid"
 DEPEND="${RDEPEND}"
+BDEPEND=""
+
 S="${S}/host-linux"
 
 src_prepare() {
