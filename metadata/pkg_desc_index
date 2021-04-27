@@ -4,4 +4,3 @@ media-libs/gst-plugins-bad 1.4.5: Less plugins for GStreamer
 media-libs/raspberrypi-userland 0_pre20150214: Raspberry Pi userspace tools and libraries
 media-plugins/gst-plugins-omx 1.2.0: GStreamer OpenMAX IL wrapper plugin
 www-plugins/chrome-token-signing 1.0.6: eID signatures WebExtension native host component
-x11-drivers/xf86-video-fbturbo 0.4.0: Drop-in replacement for xf86-video-fbdev and xf86-video-mali providing a better performance on ARM
